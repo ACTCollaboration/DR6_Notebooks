@@ -1,0 +1,380 @@
+theory:
+  # classy:
+  #   extra_args:
+  #     # modes: s,t
+  #     # output: tCl,lCl,pCl
+  #     # N_ur : 2.0328
+  #     # N_ncdm : 1
+  #     # m_ncdm : 0.06
+  #     # T_ncdm : 0.71611
+  #     # YHe: 'BBN'
+  #     # l_max_tensors: 4000
+  #     # ignore_obsolete: True
+  classy_szfast.classy_sz.classy_sz:
+    use_class_sz_fast_mode: 1
+    lensing_lkl: ACT
+    ell_factor: False
+    path: null
+    speed: 0.2
+    stop_at_error: true
+    extra_args:
+      modes: s,t
+      output: tCl,lCl,pCl
+      skip_background_and_thermo: 1
+      skip_pk: 1
+      ndim_redshifts: 4
+  # camb:
+  #   version: 1.3.6
+  #   path: null
+  #   speed: 0.3
+  #   stop_at_error: false
+  #   extra_args:
+  #     bbn_predictor: PArthENoPE_880.2_standard.dat
+  #     halofit_version: mead2016
+  #     nnu: 3.046
+  #     num_massive_neutrinos: 1
+  #     theta_H0_range:
+  #     - 40
+  #     - 100
+  #     lmax: 4000
+  #     lens_margin: 1250
+  #     lens_potential_accuracy: 4
+  #     AccuracyBoost: 1
+  #     lSampleBoost: 1
+  #     lAccuracyBoost: 1
+  #   ignore_obsolete: false
+  #   use_renames: false
+  #   external_primordial_pk: false
+  #   renames:
+  #     omegabh2: ombh2
+  #     omegach2: omch2
+  #     omegal: omega_de
+  #     omegak: omk
+  #     yhe: YHe
+  #     yheused: YHe
+  #     YpBBN: Y_p
+  #   input_params:
+  #   - As
+  #   - ns
+  #   - mnu
+  #   - ombh2
+  #   - omch2
+  #   - cosmomc_theta
+  #   output_params:
+  #   - sigma8
+  #   - YHe
+  #   - Y_p
+  #   - age
+  #   - omega_de
+  #   - omegam
+  #   - rdrag
+  #   - zrei
+  #   - H0
+  #   - DH
+likelihood:
+  bao.sdss_dr7_mgs:
+    path: /Users/karenperezsarmiento/Desktop/lensing_proj/cosmo_pkgs/data
+    prob_dist: bao_data/sdss_MGS_prob.txt
+    prob_dist_bounds:
+    - 0.8005
+    - 1.1985
+    rs_rescale: 4.29720761315
+    data:
+    - 0.15
+    - 4.465666824
+    - 0.1681350461
+    - DV_over_rs
+    aliases:
+    - BAO
+    speed: 5000
+    type: BAO
+    measurements_file: null
+    rs_fid: null
+    cov_file: null
+    invcov_file: null
+    redshift: null
+    observable_1: null
+    observable_2: null
+    observable_3: null
+    grid_file: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  bao.sixdf_2011_bao:
+    path: /Users/karenperezsarmiento/Desktop/lensing_proj/cosmo_pkgs/data
+    rs_rescale: 1.027369826
+    data:
+    - 0.106
+    - 0.336
+    - 0.015
+    - rs_over_DV
+    aliases:
+    - BAO
+    speed: 5000
+    type: BAO
+    measurements_file: null
+    rs_fid: null
+    prob_dist: null
+    cov_file: null
+    invcov_file: null
+    redshift: null
+    observable_1: null
+    observable_2: null
+    observable_3: null
+    grid_file: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  bao.sdss_dr12_lrg_bao_dmdh:
+    path: /Users/karenperezsarmiento/Desktop/lensing_proj/cosmo_pkgs/data
+    measurements_file: bao_data/sdss_DR12_LRG_BAO_DMDH.dat
+    cov_file: bao_data/sdss_DR12_LRG_BAO_DMDH_covtot.txt
+    rs_fid: 1
+    aliases:
+    - BAO
+    speed: 2000
+    type: BAO
+    rs_rescale: null
+    prob_dist: null
+    invcov_file: null
+    redshift: null
+    observable_1: null
+    observable_2: null
+    observable_3: null
+    grid_file: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  bao.sdss_dr16_lrg_bao_dmdh:
+    path: /Users/karenperezsarmiento/Desktop/lensing_proj/cosmo_pkgs/data
+    measurements_file: bao_data/sdss_DR16_LRG_BAO_DMDH.dat
+    cov_file: bao_data/sdss_DR16_LRG_BAO_DMDH_covtot.txt
+    rs_fid: 1
+    aliases:
+    - BAO
+    speed: 2000
+    type: BAO
+    rs_rescale: null
+    prob_dist: null
+    invcov_file: null
+    redshift: null
+    observable_1: null
+    observable_2: null
+    observable_3: null
+    grid_file: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  act_dr6_lenslike.ACTDR6LensLike:
+    mock: false
+    nsims_act: 792.0
+    nsims_planck: 400.0
+    no_like_corrections: True
+    lens_only: true
+    trim_lmax: 2998
+    variant: actplanck_baseline
+    apply_hartlap: true
+    limber: false
+    nz: 100
+    kmax: 10
+    scale_cov: null
+    type: []
+    speed: -1
+    stop_at_error: true
+    version: null
+    lmax: 4000
+    input_params: []
+    output_params: []
+params:
+  # A:
+  #   derived: 'lambda As: 1e9*As'
+  #   latex: 10^9 A_\mathrm{s}
+  logA:
+    latex: ln10^{10}A_s
+    prior:
+      max: 3.5
+      min: 2.5
+    proposal: 0.12892144
+    # drop: true
+    ref:
+      dist: norm
+      loc: 2.9939341
+      scale: 0.12892144
+  # A_s:
+  #   value: 'lambda logA: 1e-10*np.exp(logA)'
+  #   latex: A_\mathrm{s}
+  n_s:
+    latex: n_\mathrm{s}
+    prior:
+      dist: norm
+      loc: 0.96
+      scale: 0.02
+    proposal: 0.002
+    ref:
+      dist: norm
+      loc: 0.965
+      scale: 0.004
+  # s8h5:
+  #   derived: 'lambda sigma8, H0: sigma8*(H0*1e-2)**(-0.5)'
+  #   latex: \sigma_8/h^{0.5}
+  # s8omegamp25:
+  #   derived: 'lambda sigma8, omegam: sigma8*omegam**0.25'
+  #   latex: \sigma_8 \Omega_\mathrm{m}^{0.25}
+  # s8omegamp5:
+  #   derived: 'lambda sigma8, omegam: sigma8*omegam**0.5'
+  #   latex: \sigma_8 \Omega_\mathrm{m}^{0.5}
+  # S825:
+  #   derived: 'lambda sigma8, omegam: sigma8*(omegam/0.3)**0.25'
+  #   latex: \sigma_8 (\Omega_\mathrm{m}/0.3)^{0.25}
+  # S85:
+  #   derived: 'lambda sigma8, omegam: sigma8*(omegam/0.3)**0.5'
+  #   latex: \sigma_8 (\Omega_\mathrm{m}/0.3)^{0.5}
+  # sigma8:
+  #   latex: \sigma_8
+  #   derived: true
+  # DHBBN:
+  #   derived: 'lambda DH: 10**5*DH'
+  #   latex: 10^5 \mathrm{D}/\mathrm{H}
+  # YHe:
+  #   latex: Y_\mathrm{P}
+  #   derived: true
+  #   renames:
+  #   - yheused
+  #   - yhe
+  # Y_p:
+  #   latex: Y_P^\mathrm{BBN}
+  #   derived: true
+  #   renames:
+  #   - YpBBN
+  # age:
+  #   latex: '{\rm{Age}}/\mathrm{Gyr}'
+  #   derived: true
+  # mnu:
+  #   value: 0.06
+  omega_b:
+    latex: \Omega_\mathrm{b} h^2
+    prior:
+      dist: norm
+      loc: 0.02233
+      scale: 0.00036
+    proposal: 0.0001
+    ref:
+      dist: norm
+      loc: 0.0224
+      scale: 0.0001
+    renames:
+    - omegabh2
+  omega_cdm:
+    latex: \Omega_\mathrm{c} h^2
+    prior:
+      max: 0.99
+      min: 0.005
+    proposal: 0.0005
+    ref:
+      dist: norm
+      loc: 0.12
+      scale: 0.001
+  #   renames:
+  #   - omegach2
+  # omega_de:
+  #   latex: \Omega_\Lambda
+  #   derived: true
+  #   renames:
+  #   - omegal
+  # omegam:
+  #   latex: \Omega_\mathrm{m}
+  #   derived: true
+  # omegamh2:
+  #   derived: 'lambda omegam, H0: omegam*(H0/100)**2'
+  #   latex: \Omega_\mathrm{m} h^2
+  # rdrag:
+  #   latex: r_\mathrm{drag}
+  #   derived: true
+  # zrei:
+  #   latex: z_\mathrm{re}
+  #   derived: true
+  H0:
+    latex: H_0
+    prior:
+      max: 90.0
+      min: 50.0
+    proposal: 2.0
+    ref:
+      dist: norm
+      loc: 69.351243
+      scale: 2.0
+  tau_reio: 0.055
+  #   derived: true
+  # cosmomc_theta:
+  #   derived: false
+  #   value: 'lambda theta_MC_100: 1.e-2*theta_MC_100'
+  # theta_MC_100:
+  #   drop: true
+  #   latex: 100\theta_\mathrm{MC}
+  #   prior:
+  #     max: 10
+  #     min: 0.5
+  #   proposal: 0.0002
+  #   ref:
+  #     dist: norm
+  #     loc: 1.04109
+  #     scale: 0.0004
+  #   renames: theta
+  chi2__BAO:
+    latex: \chi^2_\mathrm{BAO}
+    derived: true
+sampler:
+  # evaluate:
+  #   override:
+  # #    # #parameter values:
+  #     omega_b : 0.0209522
+  #     omega_cdm : 0.115468
+  #     H0 : 67.2704
+  #     n_s : 0.961653
+  #     logA : 3.05321
+  mcmc:
+    burn_in: 0
+    max_tries: 10000
+    covmat: auto
+    covmat_params: null
+    proposal_scale: 1.9
+    output_every: 60s
+    learn_every: 40d
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 2.0
+    learn_proposal_Rminus1_max_early: 30.0
+    learn_proposal_Rminus1_min: 0.0
+    max_samples: .inf
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.2
+    Rminus1_cl_level: 0.95
+    Rminus1_single_split: 4
+    measure_speeds: true
+    oversample_power: 0.4
+    oversample_thin: true
+    drag: false
+    # blocking:
+    # - - 1
+    #   - - ombh2
+    #     - omch2
+    #     - theta_MC_100
+    # - - 1
+    #   - - logA
+    #     - ns
+    callback_function: null
+    callback_every: null
+    seed: null
+    check_every: null
+    oversample: null
+    drag_limits: null
+    fallback_covmat_scale: 4
+    version: 3.2.2
+output: lcdm_actplanck_baseline_167926925701_classy_szfast
+covmat: /Users/karenperezsarmiento/Desktop/lensing_proj/lcdm_actplanck_baseline_covmat.covmat
+version: 3.2.2
+debug: False
+timing: True
