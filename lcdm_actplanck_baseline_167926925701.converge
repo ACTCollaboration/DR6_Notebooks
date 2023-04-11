@@ -1,0 +1,140 @@
+Parameter autocorrelation lengths (effective number of samples N_eff = tot weight/weight length)
+
+                                        Weight Length   Sample length           N_eff
+logA                                            18.91            6.85            2233
+n_s                                             18.98            6.88            2224
+omega_b                                         18.22            6.60            2318
+omega_cdm                                       19.03            6.89            2219
+H0                                              17.72            6.42            2383
+A                                               18.96            6.87            2227
+As                                              18.96            6.87            2227
+s8h5                                            18.34            6.64            2303
+s8omegamp25                                     18.56            6.72            2276
+s8omegamp5                                      18.81            6.81            2245
+S825                                            18.56            6.72            2276
+S85                                             18.81            6.81            2245
+sigma8                                          18.40            6.67            2295
+YHe                                             18.19            6.59            2321
+age                                             18.71            6.78            2256
+omegam                                          19.14            6.93            2206
+omegamh2                                        19.02            6.89            2220
+rdrag                                           19.35            7.01            2182
+zrei                                            18.90            6.85            2234
+chi2__BAO                                       13.35            4.84            3163
+minuslogprior                                   15.20            5.51            2778
+minuslogprior__0                                15.20            5.51            2778
+chi2                                            17.21            6.23            2454
+chi2__bao.sdss_dr7_mgs                          18.04            6.53            2341
+chi2__bao.sixdf_2011_bao                        14.12            5.11            2991
+chi2__bao.sdss_dr12_lrg_bao_dmdh                13.70            4.96            3082
+chi2__bao.sdss_dr16_lrg_bao_dmdh                16.54            5.99            2553
+chi2__act_dr6_lenslike.ACTDR6LensLike           16.58            6.01            2546
+
+
+mean convergence stats using remaining chains
+param sqrt(var(chain mean)/mean(chain var))
+
+logA                                      0.0294  ln10^{10}A_s
+n_s                                       0.0274  n_\mathrm{s}
+omega_b                                   0.0508  \Omega_\mathrm{b} h^2
+omega_cdm                                 0.0285  \Omega_\mathrm{c} h^2
+H0                                        0.0122  H_0
+A                                         0.0291  10^9 A_\mathrm{s}
+As                                        0.0291  A_\mathrm{s}
+s8h5                                      0.0341  \sigma_8/h^{0.5}
+s8omegamp25                               0.0327  \sigma_8 \Omega_\mathrm{m}^{0.25}
+s8omegamp5                                0.0382  \sigma_8 \Omega_\mathrm{m}^{0.5}
+S825                                      0.0327  \sigma_8 (\Omega_\mathrm{m}/0.3)^{0.25}
+S85                                       0.0382  \sigma_8 (\Omega_\mathrm{m}/0.3)^{0.5}
+sigma8                                    0.0286  \sigma_8
+YHe                                       0.0526  Y_\mathrm{P}
+age                                       0.0214  {\rm{Age}}/\mathrm{Gyr}
+omegam                                    0.0460  \Omega_\mathrm{m}
+omegamh2                                  0.0304  \Omega_\mathrm{m} h^2
+rdrag                                     0.0356  r_\mathrm{drag}
+zrei                                      0.0084  z_\mathrm{re}
+chi2__BAO                                 0.0193  \chi^2_\mathrm{BAO}
+minuslogprior                             0.0549  -\log\pi
+minuslogprior__0                          0.0549  -\log\pi_\mathrm{0}
+chi2                                      0.0270  \chi^2
+chi2__bao.sdss_dr7_mgs                    0.0555  \chi^2_\mathrm{bao.sdss\ dr7\ mgs}
+chi2__bao.sixdf_2011_bao                  0.0549  \chi^2_\mathrm{bao.sixdf\ 2011\ bao}
+chi2__bao.sdss_dr12_lrg_bao_dmdh          0.0326  \chi^2_\mathrm{bao.sdss\ dr12\ lrg\ bao\ dmdh}
+chi2__bao.sdss_dr16_lrg_bao_dmdh          0.0471  \chi^2_\mathrm{bao.sdss\ dr16\ lrg\ bao\ dmdh}
+chi2__act_dr6_lenslike.ACTDR6LensLike     0.0396  \chi^2_\mathrm{act\ dr6\ lenslike.ACTDR6LensLike}
+
+var(mean)/mean(var) for eigenvalues of covariance of y of orthonormalized parameters
+  1     -0.00000
+  2     -0.00000
+  3      0.00059
+  4      0.00308
+  5      0.00634
+
+Split tests: rms_n([delta(upper/lower quantile)]/sd) n={2,3,4}, limit=95%:
+i.e. mean sample splitting change in the quantiles in units of the st. dev.
+
+logA                                     0.0014   0.1244   0.0625 upper
+logA                                     0.0448   0.0495   0.0556 lower
+n_s                                      0.0210   0.0451   0.0232 upper
+n_s                                      0.0054   0.0702   0.0845 lower
+omega_b                                  0.0538   0.0886   0.0820 upper
+omega_b                                  0.0169   0.0543   0.1161 lower
+omega_cdm                                0.0566   0.0517   0.0647 upper
+omega_cdm                                0.0076   0.1009   0.0812 lower
+H0                                       0.0210   0.0401   0.0596 upper
+H0                                       0.0357   0.0686   0.0871 lower
+A                                        0.0016   0.1439   0.0726 upper
+A                                        0.0382   0.0422   0.0474 lower
+As                                       0.0016   0.1439   0.0726 upper
+As                                       0.0382   0.0422   0.0474 lower
+s8h5                                     0.0562   0.0777   0.0546 upper
+s8h5                                     0.0318   0.0340   0.0686 lower
+s8omegamp25                              0.0270   0.0375   0.0701 upper
+s8omegamp25                              0.0136   0.0597   0.0387 lower
+s8omegamp5                               0.0685   0.0669   0.1147 upper
+s8omegamp5                               0.0126   0.0617   0.0335 lower
+S825                                     0.0270   0.0375   0.0701 upper
+S825                                     0.0136   0.0597   0.0387 lower
+S85                                      0.0685   0.0669   0.1147 upper
+S85                                      0.0126   0.0617   0.0335 lower
+sigma8                                   0.0313   0.0717   0.0451 upper
+sigma8                                   0.0277   0.0537   0.0631 lower
+YHe                                      0.0630   0.1037   0.0962 upper
+YHe                                      0.0184   0.0582   0.1273 lower
+age                                      0.0297   0.1024   0.0846 upper
+age                                      0.0446   0.0281   0.0737 lower
+omegam                                   0.0304   0.0868   0.1485 upper
+omegam                                   0.0061   0.0932   0.0404 lower
+omegamh2                                 0.0520   0.0422   0.0645 upper
+omegamh2                                 0.0049   0.1054   0.0884 lower
+rdrag                                    0.0228   0.1246   0.1069 upper
+rdrag                                    0.0683   0.0535   0.0617 lower
+zrei                                     0.0454   0.0525   0.0863 upper
+zrei                                     0.0453   0.0773   0.0536 lower
+chi2__BAO                                0.0086   0.0881   0.1128 upper
+chi2__BAO                                0.0128   0.0175   0.0165 lower
+minuslogprior                            0.0739   0.2072   0.1962 upper
+minuslogprior                            0.0004   0.0051   0.0028 lower
+minuslogprior__0                         0.0739   0.2072   0.1962 upper
+minuslogprior__0                         0.0004   0.0051   0.0028 lower
+chi2                                     0.1004   0.1014   0.1493 upper
+chi2                                     0.0005   0.0062   0.0053 lower
+chi2__bao.sdss_dr7_mgs                   0.0314   0.0960   0.0907 upper
+chi2__bao.sdss_dr7_mgs                   0.0156   0.0254   0.0467 lower
+chi2__bao.sixdf_2011_bao                 0.0770   0.1391   0.2357 upper
+chi2__bao.sixdf_2011_bao                 0.0002   0.0001   0.0003 lower
+chi2__bao.sdss_dr12_lrg_bao_dmdh         0.0065   0.0409   0.1628 upper
+chi2__bao.sdss_dr12_lrg_bao_dmdh         0.0002   0.0036   0.0021 lower
+chi2__bao.sdss_dr16_lrg_bao_dmdh         0.0642   0.1576   0.1250 upper
+chi2__bao.sdss_dr16_lrg_bao_dmdh         0.0277   0.0419   0.0733 lower
+chi2__act_dr6_lenslike.ACTDR6LensLike    0.0494   0.0510   0.0830 upper
+chi2__act_dr6_lenslike.ACTDR6LensLike    0.0031   0.0015   0.0064 lower
+
+Raftery&Lewis statistics
+
+chain  markov_thin  indep_thin    nburn
+   0          20          20          80
+   1          16          16          80
+   2          26          26          78
+   3          21          21          63
+

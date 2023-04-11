@@ -1,82 +1,63 @@
-# cobaya-run /Users/boris/Work/CLASS-SZ/SO-SZ/DR6_cosmopower_notebooks/lcdm_actplanck_baseline_167926925701.classy_szfast_evaluate.yaml -f
 theory:
-  # classy:
-  #   extra_args:
-  #     # modes: s,t
-  #     # output: tCl,lCl,pCl
-  #     # N_ur : 2.0328
-  #     # N_ncdm : 1
-  #     # m_ncdm : 0.06
-  #     # T_ncdm : 0.71611
-  #     # YHe: 'BBN'
-  #     # l_max_tensors: 4000
-  #     # ignore_obsolete: True
   classy_szfast.classy_sz.classy_sz:
     use_class_sz_fast_mode: 1
     lensing_lkl: ACT
-    ell_factor: False
+    ell_factor: false
     path: null
     speed: 0.2
     stop_at_error: true
     extra_args:
       modes: s,t
       output: tCl,lCl,pCl
-      skip_background_and_thermo: 0 # dont skip if you want all the derived params
-      # [continue:] this is slightly slower but ok.
+      skip_background_and_thermo: 0
       skip_pkl: 1
       skip_pknl: 1
-      k_pivot : 0.05
-      N_ncdm : 1
-      N_ur : 2.0328
-      # ndim_redshifts: 4
-  # camb:
-  #   version: 1.3.6
-  #   path: null
-  #   speed: 0.3
-  #   stop_at_error: false
-  #   extra_args:
-  #     bbn_predictor: PArthENoPE_880.2_standard.dat
-  #     halofit_version: mead2016
-  #     nnu: 3.046
-  #     num_massive_neutrinos: 1
-  #     theta_H0_range:
-  #     - 40
-  #     - 100
-  #     lmax: 4000
-  #     lens_margin: 1250
-  #     lens_potential_accuracy: 4
-  #     AccuracyBoost: 1
-  #     lSampleBoost: 1
-  #     lAccuracyBoost: 1
-  #   ignore_obsolete: false
-  #   use_renames: false
-  #   external_primordial_pk: false
-  #   renames:
-  #     omegabh2: ombh2
-  #     omegach2: omch2
-  #     omegal: omega_de
-  #     omegak: omk
-  #     yhe: YHe
-  #     yheused: YHe
-  #     YpBBN: Y_p
-  #   input_params:
-  #   - As
-  #   - ns
-  #   - mnu
-  #   - ombh2
-  #   - omch2
-  #   - cosmomc_theta
-  #   output_params:
-  #   - sigma8
-  #   - YHe
-  #   - Y_p
-  #   - age
-  #   - omega_de
-  #   - omegam
-  #   - rdrag
-  #   - zrei
-  #   - H0
-  #   - DH
+      k_pivot: 0.05
+      N_ncdm: 1
+      N_ur: 2.0328
+    ignore_obsolete: false
+    use_renames: false
+    renames:
+      As: A_s
+      ns: n_s
+      nrun: alpha_s
+      nrunrun: beta_s
+      nt: n_t
+      ntrun: alpha_t
+      rdrag: rs_drag
+      omegak: Omega_k
+      omegal: Omega_Lambda
+      w: w0_fld
+      wa: wa_fld
+      omegabh2: omega_b
+      omegab: Omega_b
+      omegach2: omega_cdm
+      omegac: Omega_cdm
+      omegam: Omega_m
+      omegan: Omega_nu
+      tau: tau_reio
+      zrei: z_reio
+      deltazrei: reionization_width
+      helium_redshift: helium_fullreio_redshift
+      helium_delta_redshift: helium_fullreio_width
+      yhe: YHe
+      yheused: YHe
+    version: v2.9.4
+    input_params:
+    - logA
+    - n_s
+    - omega_b
+    - omega_cdm
+    - H0
+    - tau_reio
+    output_params:
+    - As
+    - sigma8
+    - YHe
+    - age
+    - omegam
+    - rdrag
+    - zrei
 likelihood:
   bao.sdss_dr7_mgs:
     path: /Users/karenperezsarmiento/Desktop/lensing_proj/cosmo_pkgs/data
@@ -179,7 +160,7 @@ likelihood:
     mock: false
     nsims_act: 792.0
     nsims_planck: 400.0
-    no_like_corrections: True
+    no_like_corrections: true
     lens_only: true
     trim_lmax: 2998
     variant: actplanck_baseline
@@ -205,7 +186,6 @@ params:
       max: 3.5
       min: 2.5
     proposal: 0.12892144
-    # drop: true
     ref:
       dist: norm
       loc: 2.9939341
@@ -213,6 +193,8 @@ params:
   As:
     derived: true
     latex: A_\mathrm{s}
+    renames:
+    - A_s
   n_s:
     latex: n_\mathrm{s}
     prior:
@@ -224,6 +206,8 @@ params:
       dist: norm
       loc: 0.965
       scale: 0.004
+    renames:
+    - ns
   s8h5:
     derived: 'lambda sigma8, H0: sigma8*(H0*1e-2)**(-0.5)'
     latex: \sigma_8/h^{0.5}
@@ -242,25 +226,15 @@ params:
   sigma8:
     latex: \sigma_8
     derived: true
-  # DHBBN: # [boris] this parameter does not seem to be computed in class.
-  #   derived: 'lambda DH: 10**5*DH'
-  #   latex: 10^5 \mathrm{D}/\mathrm{H}
   YHe:
     latex: Y_\mathrm{P}
     derived: true
-  #   renames:
-  #   - yheused
-  #   - yhe
-  # Y_p: # [boris] not clear what param that is, PLA tables seem to say its the same as YHe
-  #   latex: Y_P^\mathrm{BBN}
-  #   derived: true
-  #   renames:
-  #   - YpBBN
-  age: ### currently giving 0.
+    renames:
+    - yheused
+    - yhe
+  age:
     latex: '{\rm{Age}}/\mathrm{Gyr}'
     derived: true
-  # mnu:
-    # value: 0.06
   omega_b:
     latex: \Omega_\mathrm{b} h^2
     prior:
@@ -284,25 +258,26 @@ params:
       dist: norm
       loc: 0.12
       scale: 0.001
-  #   renames:
-  #   - omegach2
-  # omega_de:
-  #   latex: \Omega_\Lambda
-  #   derived: true
-  #   renames:
-  #   - omegal
+    renames:
+    - omegach2
   omegam:
     latex: \Omega_\mathrm{m}
     derived: true
+    renames:
+    - Omega_m
   omegamh2:
     derived: 'lambda omegam, H0: omegam*(H0/100)**2'
     latex: \Omega_\mathrm{m} h^2
   rdrag:
     latex: r_\mathrm{drag}
     derived: true
+    renames:
+    - rs_drag
   zrei:
     latex: z_\mathrm{re}
     derived: true
+    renames:
+    - z_reio
   H0:
     latex: H_0
     prior:
@@ -313,35 +288,24 @@ params:
       dist: norm
       loc: 69.351243
       scale: 2.0
-  tau_reio: 0.055
-  #   derived: true
-  # cosmomc_theta:
-  #   derived: false
-  #   value: 'lambda theta_MC_100: 1.e-2*theta_MC_100'
-  # theta_MC_100:
-  #   drop: true
-  #   latex: 100\theta_\mathrm{MC}
-  #   prior:
-  #     max: 10
-  #     min: 0.5
-  #   proposal: 0.0002
-  #   ref:
-  #     dist: norm
-  #     loc: 1.04109
-  #     scale: 0.0004
-  #   renames: theta
+  tau_reio:
+    value: 0.055
+    renames:
+    - tau
   chi2__BAO:
     latex: \chi^2_\mathrm{BAO}
     derived: true
 sampler:
-  #  evaluate:
+  # evaluate:
+    # N: 1
     # override:
-  #    # #parameter values:
-      # omega_b : 0.0209522
-      # omega_cdm : 0.115468
-      # H0 : 67.2704
-      # n_s : 0.961653
-      # logA : 3.05321
+      # omega_b: 0.0209522
+      # omega_cdm: 0.115468
+      # H0: 67.2704
+      # n_s: 0.961653
+      # logA: 3.05321
+    # seed: null
+    # version: null
   mcmc:
     burn_in: 0
     max_tries: 10000
@@ -350,6 +314,7 @@ sampler:
     proposal_scale: 1.9
     output_every: 60s
     learn_every: 40d
+    temperature: 1
     learn_proposal: true
     learn_proposal_Rminus1_max: 2.0
     learn_proposal_Rminus1_max_early: 30.0
@@ -363,14 +328,13 @@ sampler:
     oversample_power: 0.4
     oversample_thin: true
     drag: false
-  #   # blocking:
-  #   # - - 1
-  #   #   - - ombh2
-  #   #     - omch2
-  #   #     - theta_MC_100
-  #   # - - 1
-  #   #   - - logA
-  #   #     - ns
+    blocking:
+    - - 1
+      - - logA
+        - n_s
+        - omega_b
+        - omega_cdm
+        - H0
     callback_function: null
     callback_every: null
     seed: null
@@ -378,9 +342,8 @@ sampler:
     oversample: null
     drag_limits: null
     fallback_covmat_scale: 4
-    version: 3.2.2
+    version: '3.3'
 output: lcdm_actplanck_baseline_167926925701
 covmat: /Users/karenperezsarmiento/Desktop/lensing_proj/DR6_Notebooks/lcdm_actplanck_baseline_covmat.covmat
-version: 3.2.2
-debug: False
-timing: True
+version: '3.3'
+timing: true

@@ -1,4 +1,3 @@
-# cobaya-run /Users/boris/Work/CLASS-SZ/SO-SZ/DR6_cosmopower_notebooks/lcdm_actplanck_baseline_167926925701.classy_szfast_evaluate.yaml -f
 theory:
   # classy:
   #   extra_args:
@@ -21,14 +20,9 @@ theory:
     extra_args:
       modes: s,t
       output: tCl,lCl,pCl
-      skip_background_and_thermo: 0 # dont skip if you want all the derived params
-      # [continue:] this is slightly slower but ok.
-      skip_pkl: 1
-      skip_pknl: 1
-      k_pivot : 0.05
-      N_ncdm : 1
-      N_ur : 2.0328
-      # ndim_redshifts: 4
+      skip_background_and_thermo: 1
+      skip_pk: 1
+      ndim_redshifts: 4
   # camb:
   #   version: 1.3.6
   #   path: null
@@ -196,9 +190,9 @@ likelihood:
     input_params: []
     output_params: []
 params:
-  A:
-    derived: 'lambda As: 1e9*As'
-    latex: 10^9 A_\mathrm{s}
+  # A:
+  #   derived: 'lambda As: 1e9*As'
+  #   latex: 10^9 A_\mathrm{s}
   logA:
     latex: ln10^{10}A_s
     prior:
@@ -210,9 +204,9 @@ params:
       dist: norm
       loc: 2.9939341
       scale: 0.12892144
-  As:
-    derived: true
-    latex: A_\mathrm{s}
+  # A_s:
+  #   value: 'lambda logA: 1e-10*np.exp(logA)'
+  #   latex: A_\mathrm{s}
   n_s:
     latex: n_\mathrm{s}
     prior:
@@ -224,43 +218,43 @@ params:
       dist: norm
       loc: 0.965
       scale: 0.004
-  s8h5:
-    derived: 'lambda sigma8, H0: sigma8*(H0*1e-2)**(-0.5)'
-    latex: \sigma_8/h^{0.5}
-  s8omegamp25:
-    derived: 'lambda sigma8, omegam: sigma8*omegam**0.25'
-    latex: \sigma_8 \Omega_\mathrm{m}^{0.25}
-  s8omegamp5:
-    derived: 'lambda sigma8, omegam: sigma8*omegam**0.5'
-    latex: \sigma_8 \Omega_\mathrm{m}^{0.5}
-  S825:
-    derived: 'lambda sigma8, omegam: sigma8*(omegam/0.3)**0.25'
-    latex: \sigma_8 (\Omega_\mathrm{m}/0.3)^{0.25}
-  S85:
-    derived: 'lambda sigma8, omegam: sigma8*(omegam/0.3)**0.5'
-    latex: \sigma_8 (\Omega_\mathrm{m}/0.3)^{0.5}
-  sigma8:
-    latex: \sigma_8
-    derived: true
-  # DHBBN: # [boris] this parameter does not seem to be computed in class.
+  # s8h5:
+  #   derived: 'lambda sigma8, H0: sigma8*(H0*1e-2)**(-0.5)'
+  #   latex: \sigma_8/h^{0.5}
+  # s8omegamp25:
+  #   derived: 'lambda sigma8, omegam: sigma8*omegam**0.25'
+  #   latex: \sigma_8 \Omega_\mathrm{m}^{0.25}
+  # s8omegamp5:
+  #   derived: 'lambda sigma8, omegam: sigma8*omegam**0.5'
+  #   latex: \sigma_8 \Omega_\mathrm{m}^{0.5}
+  # S825:
+  #   derived: 'lambda sigma8, omegam: sigma8*(omegam/0.3)**0.25'
+  #   latex: \sigma_8 (\Omega_\mathrm{m}/0.3)^{0.25}
+  # S85:
+  #   derived: 'lambda sigma8, omegam: sigma8*(omegam/0.3)**0.5'
+  #   latex: \sigma_8 (\Omega_\mathrm{m}/0.3)^{0.5}
+  # sigma8:
+  #   latex: \sigma_8
+  #   derived: true
+  # DHBBN:
   #   derived: 'lambda DH: 10**5*DH'
   #   latex: 10^5 \mathrm{D}/\mathrm{H}
-  YHe:
-    latex: Y_\mathrm{P}
-    derived: true
+  # YHe:
+  #   latex: Y_\mathrm{P}
+  #   derived: true
   #   renames:
   #   - yheused
   #   - yhe
-  # Y_p: # [boris] not clear what param that is, PLA tables seem to say its the same as YHe
+  # Y_p:
   #   latex: Y_P^\mathrm{BBN}
   #   derived: true
   #   renames:
   #   - YpBBN
-  age: ### currently giving 0.
-    latex: '{\rm{Age}}/\mathrm{Gyr}'
-    derived: true
+  # age:
+  #   latex: '{\rm{Age}}/\mathrm{Gyr}'
+  #   derived: true
   # mnu:
-    # value: 0.06
+  #   value: 0.06
   omega_b:
     latex: \Omega_\mathrm{b} h^2
     prior:
@@ -291,18 +285,18 @@ params:
   #   derived: true
   #   renames:
   #   - omegal
-  omegam:
-    latex: \Omega_\mathrm{m}
-    derived: true
-  omegamh2:
-    derived: 'lambda omegam, H0: omegam*(H0/100)**2'
-    latex: \Omega_\mathrm{m} h^2
-  rdrag:
-    latex: r_\mathrm{drag}
-    derived: true
-  zrei:
-    latex: z_\mathrm{re}
-    derived: true
+  # omegam:
+  #   latex: \Omega_\mathrm{m}
+  #   derived: true
+  # omegamh2:
+  #   derived: 'lambda omegam, H0: omegam*(H0/100)**2'
+  #   latex: \Omega_\mathrm{m} h^2
+  # rdrag:
+  #   latex: r_\mathrm{drag}
+  #   derived: true
+  # zrei:
+  #   latex: z_\mathrm{re}
+  #   derived: true
   H0:
     latex: H_0
     prior:
@@ -334,14 +328,14 @@ params:
     latex: \chi^2_\mathrm{BAO}
     derived: true
 sampler:
-  #  evaluate:
-    # override:
-  #    # #parameter values:
-      # omega_b : 0.0209522
-      # omega_cdm : 0.115468
-      # H0 : 67.2704
-      # n_s : 0.961653
-      # logA : 3.05321
+  # evaluate:
+  #   override:
+  # #    # #parameter values:
+  #     omega_b : 0.0209522
+  #     omega_cdm : 0.115468
+  #     H0 : 67.2704
+  #     n_s : 0.961653
+  #     logA : 3.05321
   mcmc:
     burn_in: 0
     max_tries: 10000
@@ -363,14 +357,14 @@ sampler:
     oversample_power: 0.4
     oversample_thin: true
     drag: false
-  #   # blocking:
-  #   # - - 1
-  #   #   - - ombh2
-  #   #     - omch2
-  #   #     - theta_MC_100
-  #   # - - 1
-  #   #   - - logA
-  #   #     - ns
+    # blocking:
+    # - - 1
+    #   - - ombh2
+    #     - omch2
+    #     - theta_MC_100
+    # - - 1
+    #   - - logA
+    #     - ns
     callback_function: null
     callback_every: null
     seed: null
@@ -379,8 +373,8 @@ sampler:
     drag_limits: null
     fallback_covmat_scale: 4
     version: 3.2.2
-output: lcdm_actplanck_baseline_167926925701
-covmat: /Users/karenperezsarmiento/Desktop/lensing_proj/DR6_Notebooks/lcdm_actplanck_baseline_covmat.covmat
+output: lcdm_actplanck_baseline_167926925701_classy_szfast
+covmat: /Users/karenperezsarmiento/Desktop/lensing_proj/lcdm_actplanck_baseline_covmat.covmat
 version: 3.2.2
 debug: False
 timing: True
