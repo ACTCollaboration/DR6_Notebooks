@@ -17,7 +17,7 @@ If you use the data products referenced in these notebooks please cite the relev
 - [Qu et al. (2023)](https://arxiv.org/abs/2304.05202)
 - [Madhavacheril et al. (2023)](https://arxiv.org/abs/2304.05203)
 - [MacCrann et al. (2023)](https://arxiv.org/abs/2304.05196)
-- [Farren et al. (2023)](https://arxiv.org/pdf/2309.05659.pdf).
+- [Farren et al. (2023)](https://arxiv.org/abs/2309.05659)
 
   
 
