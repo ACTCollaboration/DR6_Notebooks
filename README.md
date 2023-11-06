@@ -11,7 +11,7 @@ Each notebook has been written to work in Google colab and can be accessed eithe
 
 - [Deriving the lensing transfer function](https://colab.research.google.com/github/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_lensing_transfer_function.ipynb)
 
-- [The lensing likelihood with cosmopower]()
+- [The lensing likelihood with cosmopower](https://colab.research.google.com/github/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_lensing_likelihood_with_cosmopower.ipynb)
 
 If you use the data products referenced in these notebooks please cite the relevant papers from ACT:
 - [Qu et al. (2023)](https://arxiv.org/abs/2304.05202)
