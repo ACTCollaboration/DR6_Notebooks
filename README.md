@@ -9,13 +9,15 @@ Each notebook has been written to work in Google colab and can be accessed eithe
 
 - [Cross correlations with ACT CMB Lensing Maps](https://colab.research.google.com/github/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_lensing_cross_correlation.ipynb)
 
-- [Deriving the lensing transfer function]()
+- [Deriving the lensing transfer function](https://colab.research.google.com/github/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_lensing_transfer_function.ipynb)
 
 - [The lensing likelihood with cosmopower]()
 
 If you use the data products referenced in these notebooks please cite the relevant papers from ACT:
 - [Qu et al. (2023)](https://arxiv.org/abs/2304.05202)
 - [Madhavacheril et al. (2023)](https://arxiv.org/abs/2304.05203)
+- [MacCrann et al. (2023)](https://arxiv.org/abs/2304.05196)
+- [Farren et al. (2023)](https://arxiv.org/pdf/2309.05659.pdf).
 
   
 
