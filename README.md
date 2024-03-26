@@ -15,6 +15,8 @@ Each notebook has been written to work in Google colab and can be accessed eithe
 
 - [Investigating CIB deprojection in the ACT ymap](https://github.com/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_ymap_CIB.ipynb)
 
+- [Stacking on tSZ clusters in the ACT ymap](https://github.com/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_ymap_stacking.ipynb)
+
 If you use the data products referenced in these notebooks please cite the relevant papers from ACT:
 - [Qu et al. (2023)](https://arxiv.org/abs/2304.05202)
 - [Madhavacheril et al. (2023)](https://arxiv.org/abs/2304.05203)
