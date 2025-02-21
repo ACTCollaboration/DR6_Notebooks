@@ -2,10 +2,11 @@ import numpy as np
 from pixell import utils, enmap
 from scipy import ndimage
 import warnings
+from typing import Tuple
 
-def get_tmap_tiles(tmap: enmap.ndmap, 
-                   grid_deg: float, 
-                   zeromap: enmap.ndmap, 
+def get_tmap_tiles(tmap:enmap.ndmap, 
+                   grid_deg:float, 
+                   zeromap:enmap.ndmap, 
                    id=None
                    ):
     tile_map = tiles_t_quick(tmap, grid_deg, id=id)
@@ -13,7 +14,9 @@ def get_tmap_tiles(tmap: enmap.ndmap,
     return tile_map
 
 
-def get_medrat(snr: enmap, tiledmap):
+def get_medrat(snr:enmap.ndmap, 
+               tiledmap:enmap.ndmap,
+               )->np.ndarray:
     """
     gets median ratio for map renormalization given tiles
 
@@ -37,7 +40,8 @@ def get_medrat(snr: enmap, tiledmap):
     return med_ratio
 
 
-def get_non_zero_pix(tmap):
+def get_non_zero_pix(tmap:enmap.ndmap
+                     )->Tuple[np.array,np.array]:
     """
     Find non-zero pixel at around half of dec range
 
@@ -69,39 +73,8 @@ def get_non_zero_pix(tmap):
     return dec_pix, ra_pix
 
 
-def time_shift_in_ra(tmap):
-    """
-    Gets time difference for 1 degree shift in ra at the center
-
-    Args:
-        tmap: ndmap of time map
-        shift_deg: shift in ra in degree
-
-    Returns:
-        t_shift: time shift in seconds
-    """
-
-    dec_pix0, ra_pix0 = get_non_zero_pix(tmap)
-    t0 = tmap[dec_pix0, ra_pix0]
-    t1 = 0.0
-    t_shift = 0.0
-
-    for i in range(8):
-        # try to find another point for t2 that is not in empty area
-        t1 = tmap[
-            dec_pix0, ra_pix0 + int((i + 2) * 0.25 / np.abs(tmap.wcs.wcs.cdelt[0]))
-        ]  # try to get an ra_shift increasing from 0.25 by 0.25 degree increment
-        if t1 > 0:
-            # rescale the time shift to 1degree in ra
-            t_shift = np.abs(t1 - t0) / ((i + 2) * 0.25)
-            break
-        else:
-            continue
-
-    return t_shift
-
-
-def time_shift_in_ra_new(tmap):
+def time_shift_in_ra(tmap:enmap.ndmap
+                     )->float:
     """
     Gets time difference for 1 degree shift in ra at the center
 
@@ -139,7 +112,9 @@ def time_shift_in_ra_new(tmap):
     return t_shift
 
 
-def get_decs(tmap, grid_deg):
+def get_decs(tmap:enmap.ndmap, 
+             grid_deg:float
+             )->np.array:
     """
     Returns a bunch of decs (in pixel) given a resolution
 
@@ -165,55 +140,9 @@ def get_decs(tmap, grid_deg):
     return decs_pix
 
 
-def tiles_t(tmap, grid_deg):
-    """takes tmap as imput and return a tilemap with pixels having same ind number beloing to the same time
-
-    Args:
-        tmap: ndmap of time map
-        grid_deg: resolution in degree
-
-    Returns:
-        mask_poly: ndmap of tile map with pixels labeled with tile number
-    """
-
-    t_max = np.max(tmap)
-    t_shift_1deg = time_shift_in_ra_new(tmap)
-    t_shift = t_shift_1deg * grid_deg
-    if t_shift == 0.0:
-        raise ValueError("did not find proper non zero pixel to measure t_shift")
-    t_offsets = int(t_max / t_shift) + 1
-    decs_pix = get_decs(tmap, grid_deg)
-    mask_poly = enmap.zeros(tmap.shape, tmap.wcs)
-    index = 1
-    for i in range(t_offsets):
-        if i != t_offsets - 1:
-            t1 = i * t_shift
-            t2 = (i + 1) * t_shift
-        else:
-            t1 = i * t_shift
-            t2 = t_max + 60
-        mask_time = np.zeros((tmap.shape[0], tmap.shape[1]))
-        mask_time[np.where((tmap >= t1) & (tmap < t2))] = 1
-        for j in range(decs_pix.shape[0] - 1):
-            dec1_pix = int(decs_pix[j])
-            dec2_pix = int(decs_pix[j + 1])
-            mask_dec = np.zeros((tmap.shape[0], tmap.shape[1]))
-            mask_dec[dec1_pix:dec2_pix, :] = 1
-            mask_final = mask_dec * mask_time
-            mask_poly[np.where(mask_final != 0)] = index
-            index += 1
-    mask_poly[np.where(tmap == 0)] = 0
-    # reindex tiles so that indices are continuous
-    mask_reind = enmap.zeros(tmap.shape, tmap.wcs)
-    index = 0
-    for i in range(1, int(np.max(mask_poly)) + 1):
-        if i in mask_poly:
-            mask_reind[np.where(mask_poly == i)] = index + 1
-            index += 1
-    return mask_reind
-
-
-def tiles_t_quick(tmap, grid_deg, id=None):
+def tiles_t_quick(tmap:enmap.ndmap, 
+                  grid_deg:float, 
+                 )->enmap.ndmap:
     """takes tmap as input and return a tilemap with pixels having same ind number belonging to the same time
 
     Args:
@@ -224,13 +153,9 @@ def tiles_t_quick(tmap, grid_deg, id=None):
         mask_poly: ndmap of tile map with pixels labeled with tile number
     """
     t_max = np.nanmax(tmap)
-    t_shift_1deg = time_shift_in_ra_new(tmap)
+    t_shift_1deg = time_shift_in_ra(tmap)
     t_shift = t_shift_1deg * grid_deg
     if t_shift == 0.0:
-        if id is not None:
-            print(
-                f"Warning: did not find proper non zero pixel to measure t_shift for {id}"
-            )
         raise ValueError("did not find proper non zero pixel to measure t_shift")
     t_offsets = int(t_max / t_shift) + 1
     decs_pix = get_decs(tmap, grid_deg)
@@ -259,12 +184,14 @@ def tiles_t_quick(tmap, grid_deg, id=None):
     return mask_poly
 
 
-def apply_tiles(imap, tiles):
+def apply_tiles(imap:enmap.ndmap, 
+                tiles:enmap.ndmap
+                )->list:
     """breaks imap into tiles and returns a list of tiles
 
     Args:
         imap: ndmap of imap
-        tiles: ndmap of tiles
+        tiles: ndmap of tile indices of shape imap
 
         Returns:
             tiles_list: list of tiles
@@ -279,7 +206,9 @@ def apply_tiles(imap, tiles):
     return tiles_list
 
 
-def root_median_square(imap, tiles):
+def root_median_square(imap:enmap.ndmap, 
+                       tiles:enmap.ndmap
+                       )->list:
     """returns a list of root median square of tiles
 
     Args:
@@ -295,7 +224,11 @@ def root_median_square(imap, tiles):
     return medians**0.5
 
 
-def get_median(imap, tiles, dec, ra):
+def get_median(imap:enmap.ndmap, 
+               tiles:enmap.ndmap, 
+               dec:float, 
+               ra:float
+               )->float:
     """returns median of the tile that contains ra, dec
 
     Args:
@@ -317,7 +250,11 @@ def get_median(imap, tiles, dec, ra):
     return median
 
 
-def get_tile_center(tmap, grid_deg, dec, ra):
+def get_tile_center(tmap:enmap.ndmap, 
+                    grid_deg:float, 
+                    dec:float, 
+                    ra:float
+                    )->enmap.ndmap:
     """returns a tile that's centered at ra, dec
 
     Args:
@@ -342,7 +279,6 @@ def get_tile_center(tmap, grid_deg, dec, ra):
             n = i
     time_shift = np.abs((time_ndeg - time) / n) * grid_half
     map_box = enmap.corners(tmap.shape, tmap.wcs, npoint=10, corner=True)
-    map_box_deg = np.rad2deg(map_box)
     map_dec_min = np.min(map_box[:, 0])  # in rad
     map_dec_max = np.max(map_box[:, 0])
     dec_max = np.min([map_dec_max, dec_rad + grid_half * utils.degree])
@@ -360,7 +296,9 @@ def get_tile_center(tmap, grid_deg, dec, ra):
     return mask_final
 
 
-def get_center_median(imap, mask):
+def get_center_median(imap:enmap.ndmap, 
+                      mask:enmap.ndmap
+                      )->float:
     """
     returns median of centered tile
 
@@ -377,7 +315,8 @@ def get_center_median(imap, mask):
     return median
 
 
-def median_of_tiles(medians):
+def median_of_tiles(medians:list|np.array
+                   )->float:
     """
     returns median of medians excluding zeros
 
@@ -394,7 +333,8 @@ def median_of_tiles(medians):
     return median
 
 
-def mean_of_tiles(medians):
+def mean_of_tiles(medians:list|np.array
+                 )->float:
     """
     returns mean of medians excluding zeros
 

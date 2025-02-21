@@ -24,8 +24,8 @@ def load_act_catalog(source_cat_file:str='PS_S19_f090_2pass_optimalCatalog.fits'
     return sources
 
 
-def radec_to_str_name(ra: float, 
-                      dec: float, 
+def radec_to_str_name(ra:float, 
+                      dec:float, 
                       source_class="pointsource", 
                       observatory="SO"
                       ):
@@ -94,12 +94,14 @@ def radec_to_str_name(ra: float,
     name = "{}-{} J{}{}".format(observatory, source_class, rastr, decstr)
     return name
 
-def get_source_sky_positions(extracted_sources,
-                             skymap
+def get_source_sky_positions(extracted_sources:dict,
+                             skymap:enmap.enmap
                              ):
     '''
     from output of extract_sources, use xpeak and ypeak to 
     convert to sky coordinates given the enmap `skymap`.
+
+    returns `extracted_sources` with `ra` and `dec` keys.
     '''
     for f in extracted_sources:
         x,y = extracted_sources[f]['xpeak'],extracted_sources[f]['ypeak']
@@ -110,12 +112,14 @@ def get_source_sky_positions(extracted_sources,
     return extracted_sources
 
 
-def get_source_observation_time(extracted_sources,
+def get_source_observation_time(extracted_sources:dict,
                                 timemap:np.ndarray
                                 ):
     '''
     from output of extract_sources, use xpeak and ypeak to 
     get the observed time given the map `timemap`.
+
+    returns `extracted_sources` with a `time` key.
     '''
     for f in extracted_sources:
         x,y = int(extracted_sources[f]['xpeak']),int(extracted_sources[f]['ypeak'])
@@ -384,7 +388,7 @@ def find_using_photutils(Tmap:np.ndarray,
         * kron_fluxerr - Parameter requires that Tmap already be in units of mJy.
         * kron_radius - units of pixels.
 
-    Function written by Melanie Archipley, adapted by AF Jan 2025
+    Function written by Melanie Archipley, adapted by Allen Foster Jan 2025
     """
     # this import is here instead of at the beginning because it has strange
     # dependencies that I (Melanie) do not want to cause problems for other people
@@ -461,7 +465,12 @@ def find_using_photutils(Tmap:np.ndarray,
     return groups
 
 
-def crossmatch_mask(sources, crosscat, radius:float,mode:str='all',return_matches:bool=False):
+def crossmatch_mask(sources, 
+                    crosscat, 
+                    radius:float,
+                    mode:str='all',
+                    return_matches:bool=False
+                   ):
     """Determines if source matches with masked objects
 
     Args:

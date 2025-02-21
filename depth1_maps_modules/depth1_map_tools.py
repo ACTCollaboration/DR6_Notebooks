@@ -3,21 +3,26 @@ from pixell import enmap
 import warnings
 
 
-def kappa_clean(kappa: np.ndarray, 
-                rho: np.ndarray
+def kappa_clean(kappa:np.ndarray, 
+                rho:np.ndarray
                 ):
+    ## set the inverse-variance below a minimum value to 1e-3 * max of kappa
+    ## this effectively thresholds the variance, and reduces SNR for high variance pixels.
+    ## also make variance infinite if pixels aren't hit.
     warnings.filterwarnings("ignore", category=RuntimeWarning)
     kappa = np.maximum(kappa, np.nanmax(kappa) * 1e-3)
     kappa[np.where(rho == 0.0)] = 0.0
     return kappa
 
 
-def clean_map(imap: np.ndarray, 
-              inverse_variance: np.ndarray,
+def clean_map(imap:np.ndarray, 
+              inverse_variance:np.ndarray,
               fraction:float=0.01,
               cut_on:str='max'
               ):
-    ## cut_on can be max or median, this sets the imap to zero for values of inverse variance
+    ## zero out regions of the map with variance above a relative threshold.
+    ##
+    ## cut_on can be `max` or `median`, this sets the imap to zero for values of inverse variance
     ## which are below fraction*max or fraction*median of inverse variance map.
     warnings.filterwarnings("ignore", category=RuntimeWarning)
     if cut_on=='median' or cut_on=='med':
@@ -29,7 +34,9 @@ def clean_map(imap: np.ndarray,
     return imap
 
 
-def mask_edge(imap: enmap.ndmap, pix_num: int):
+def mask_edge(imap:enmap.ndmap, 
+              pix_num: int
+             ):
     """Get a mask that masking off edge pixels
 
     Args:
@@ -56,9 +63,18 @@ def mask_edge(imap: enmap.ndmap, pix_num: int):
 def preprocess_map(rho_map:enmap.enmap,
                    kappa_map:enmap.enmap,
                    time_map:enmap.enmap=None,
-                   galmask_file='/scratch/gpfs/SIMONSOBS/users/amfoster/depth1_act_maps/inputs/mask_for_sources2019_plus_dust.fits',
+                   galmask_file='galactic_dust_mask.fits',
                    flatfield=False
                    ):
+    '''
+    Clean the maps by cutting on variance, masking the galaxy and masking map edges.
+
+    Flatfield the noise so that regions of low weight with highly non-gaussian noise are de-weighted.
+    Defualt is to tile the map in 1deg chunks.
+    Both flux and snr are reduced by the relative amplitude of the variance in the snr of the tile.
+
+    returns the cleaned, masked and flatfielded flux and snr maps.
+    '''
     from tiles import get_medrat, get_tmap_tiles
     
     print('Cleaning maps...')
@@ -83,7 +99,7 @@ def preprocess_map(rho_map:enmap.enmap,
         snr *= gal_mask
         del gal_mask,galaxy_mask
         
-    edge_mask = mask_edge(flux,20)
+    edge_mask = mask_edge(flux,40)
     flux *= edge_mask
     snr *= edge_mask
     del edge_mask
