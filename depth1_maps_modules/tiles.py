@@ -7,9 +7,8 @@ from typing import Tuple, Union
 def get_tmap_tiles(tmap:enmap.ndmap, 
                    grid_deg:float, 
                    zeromap:enmap.ndmap, 
-                   id=None
-                   ):
-    tile_map = tiles_t_quick(tmap, grid_deg, id=id)
+                   )->enmap.ndmap:
+    tile_map = tiles_t_quick(tmap, grid_deg)
     tile_map[np.where(zeromap == 0.0)] = 0.0
     return tile_map
 
