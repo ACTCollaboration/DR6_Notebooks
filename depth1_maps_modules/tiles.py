@@ -2,7 +2,7 @@ import numpy as np
 from pixell import utils, enmap
 from scipy import ndimage
 import warnings
-from typing import Tuple
+from typing import Tuple, Union
 
 def get_tmap_tiles(tmap:enmap.ndmap, 
                    grid_deg:float, 
@@ -315,7 +315,7 @@ def get_center_median(imap:enmap.ndmap,
     return median
 
 
-def median_of_tiles(medians:list|np.array
+def median_of_tiles(medians:Union[list,np.array]
                    )->float:
     """
     returns median of medians excluding zeros
@@ -333,7 +333,7 @@ def median_of_tiles(medians:list|np.array
     return median
 
 
-def mean_of_tiles(medians:list|np.array
+def mean_of_tiles(medians:Union[list,np.array]
                  )->float:
     """
     returns mean of medians excluding zeros
