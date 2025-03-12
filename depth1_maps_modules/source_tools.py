@@ -22,13 +22,12 @@ def load_act_catalog(source_cat_file:str='act_sample_cat.fits',
 def radec_to_str_name(ra:float, 
                       dec:float, 
                       source_class="pointsource", 
-                      observatory="SO"
+                      observatory="ACT"
                       ):
     """
-    ## stolen from spt3g_software -AF
-
     Convert RA & dec (in radians) to IAU-approved string name.
-
+    Allow for prepending of observatory name and source class, i.e. a cluster or variable.
+    
     Arguments
     ---------
     ra : float
@@ -338,9 +337,9 @@ def find_using_photutils(Tmap:np.ndarray,
                          nsigma:float=5.0
                          ):
     """
-    Written to take same inputs and return outputs in the same format as the
-    function ``find_groups``.  Utilizing astropy.photutils, one can deblend
-    sources close to each other.  Exactly how the deblending is done uses the
+    Use the photutils package to find sources and extract their fluxes.
+    Utilizing astropy.photutils, one can deblend sources close to each other.  
+    Exactly how the deblending is done uses the
     default arguments of the package, influenced by SExtractor.
 
     From ``find_groups``: given a 2d array (a map), will find groups of elements
