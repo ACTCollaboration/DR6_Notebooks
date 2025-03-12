@@ -606,5 +606,3 @@ def crossmatch_sources(extracted_sources,
     print(len(transient_candidates),'transient candidates')
     print(len(noise_candidates),'probably noise') 
     return source_candidates, transient_candidates, noise_candidates
-
-
