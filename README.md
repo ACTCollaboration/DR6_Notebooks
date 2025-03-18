@@ -23,7 +23,7 @@ If you use the data products referenced in these notebooks please cite the relev
 - [MacCrann et al. (2023)](https://arxiv.org/abs/2304.05196)
 - [Farren et al. (2023)](https://arxiv.org/abs/2309.05659)
 - [Coulton et al. (2024)](https://arxiv.org/abs/2307.01258)
-
+- [Nerval et. al. (2025)](https://arxiv.org/abs/2503.10798)
   
 
 
