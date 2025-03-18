@@ -25,6 +25,8 @@ Each notebook has been written to work in Google colab and can be accessed eithe
 
 - [CIB correlations with ACT CMB Lensing Maps](https://github.com/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_lensing_CIB_correlation.ipynb)
 
+- [Viewing the lensing power spectrum](https://github.com/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_lensing_power.ipynb)
+
 - [Deriving the lensing transfer function](https://github.com/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_lensing_transfer_function.ipynb)
 
 - [The lensing likelihood with cosmopower](https://github.com/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_lensing_likelihood_with_cosmopower.ipynb)
