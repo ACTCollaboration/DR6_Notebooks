@@ -41,12 +41,12 @@ Each notebook has been written to work in Google colab and can be accessed eithe
 If you use the data products referenced in these notebooks please cite the relevant papers from ACT:
 
 ### Maps and TOD Notebooks
-- [Naess et. al. 2025](https://arxiv.org/abs/2503.14451)
+- [Naess et. al. (2025)](https://arxiv.org/abs/2503.14451)
 - [Nerval et. al. (2025)](https://arxiv.org/abs/2503.10798)
 
 ### Power Spectrum and Likelihood Notebooks
-- [Louis et. al. 2025](https://arxiv.org/abs/2503.14452)
-- [Calabrese et. al. 2025](https://arxiv.org/abs/2503.14454)
+- [Louis et. al. (2025)](https://arxiv.org/abs/2503.14452)
+- [Calabrese et. al. (2025)](https://arxiv.org/abs/2503.14454)
 
 ### Lensing Notebooks
 - [Qu et al. (2023)](https://arxiv.org/abs/2304.05202)
