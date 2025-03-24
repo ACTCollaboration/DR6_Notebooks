@@ -38,7 +38,7 @@ Each notebook has been written to work in Google colab and can be accessed eithe
 - [Stacking on tSZ clusters in the ACT ymap](https://github.com/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_ymap_stacking.ipynb)
 
 ## Attribution:
-If you use the data products referenced in these notebooks please cite the relevant papers from ACT and acknowledge this repository (https://github.com/ACTCollaboration/DR6_Notebooks).
+If you use the data products referenced in these notebooks please cite the relevant papers from ACT and acknowledge this repository (https://github.com/ACTCollaboration/DR6_Notebooks). In addition, if the notebook uses _Planck_ data, please cite the relevant papers from _Planck_ below.
 
 ### Maps and TOD Notebooks
 - [Naess et. al. (2025)](https://arxiv.org/abs/2503.14451)
@@ -57,5 +57,11 @@ If you use the data products referenced in these notebooks please cite the relev
 ### ILC Maps Notebooks
 - [Coulton et al. (2024)](https://arxiv.org/abs/2307.01258)
   
+### _Planck_ Maps
+- [Planck Collaboration et. al. (2020)](https://arxiv.org/abs/1807.06207)
 
+### _Planck_ Likelihood
+- [Planck Collaboration et. al. (2020)](https://arxiv.org/abs/1907.12875)
 
+### _Planck_ Lensing
+- [Planck Collaboration et. al. (2020)](https://arxiv.org/abs/2206.07773)
