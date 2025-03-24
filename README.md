@@ -1,7 +1,7 @@
 # DR6_Notebooks
-These notebooks have been developed by the Atacama Cosmology Telescope collaboration to demonstrate how one can use data products from ACT's Data Release 6 (DR6) to perform common analyses.
+These notebooks have been developed by the Atacama Cosmology Telescope collaboration to demonstrate how one can use data products from ACT's Data Release 6 (DR6) to perform common analyses. If you make use of these notebooks as a development aid in a publication-worthy analysis, please follow instructions in the [attribution section](#attribution) below.
 
-The data products used in these notebooks are publicly available on [Lambda](https://lambda.gsfc.nasa.gov/product/act/actadv_prod_table.html). 
+The data products used in these notebooks are publicly available on [LAMBDA](https://lambda.gsfc.nasa.gov/product/act/actadv_prod_table.html) and at [NERSC](https://crd.lbl.gov/divisions/scidata/c3/c3-research/cosmic-microwave-background/cmb-data-at-nersc/). See the ACT Data Products [webpage](https://act.princeton.edu/act-dr6-data-products) for up-to-date information. These notebooks make use of an alternative server located at Princeton University (`phy-act1`) to host select data products. Products on `phy-act1` are for demsontration purposes only; please use one of the official data hosting locations for publication-worthy analyses.  
 
 Each notebook has been written to work in Google colab and can be accessed either by clicking the colab button in the notebook file above, or using the links below. Note: this will open a frozen, read-only version. It will still run, but if you want to edit or save your work, you will need to first save a copy of the colab notebook in your personal Google drive. If you want to adapt these notebooks to run on your laptop or on a cluster, you can also clone the repository! However, you may need to manage the notebook dependencies manually.
 
@@ -9,7 +9,7 @@ Each notebook has been written to work in Google colab and can be accessed eithe
 
 ### Maps and TOD Notebooks
 
-- ACT DR6 maps showcase (coming soon)
+- [ACT DR6 map manipulation and showcase](coming soon)
 
 - [Working with ``depth1" maps for transients](https://github.com/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_depth1_maps.ipynb)
 
@@ -37,8 +37,8 @@ Each notebook has been written to work in Google colab and can be accessed eithe
 
 - [Stacking on tSZ clusters in the ACT ymap](https://github.com/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_ymap_stacking.ipynb)
 
-## Papers
-If you use the data products referenced in these notebooks please cite the relevant papers from ACT:
+## Attribution:
+If you use the data products referenced in these notebooks please cite the relevant papers from ACT and acknowledge this repository (https://github.com/ACTCollaboration/DR6_Notebooks).
 
 ### Maps and TOD Notebooks
 - [Naess et. al. (2025)](https://arxiv.org/abs/2503.14451)
