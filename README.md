@@ -9,7 +9,7 @@ Each notebook has been written to work in Google colab and can be accessed eithe
 
 ### Maps and TOD Notebooks
 
-- [ACT DR6 map manipulation and showcase](coming soon)
+- [ACT DR6 map manipulation and showcase](https://github.com/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_maps.ipynb)
 
 - [Working with ``depth1" maps for transients](https://github.com/ACTCollaboration/DR6_Notebooks/blob/main/ACT_DR6_depth1_maps.ipynb)
 
